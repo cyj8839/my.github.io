@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    /* 기본 스타일 */
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: 'Apple SD 산돌고딕 Neo', sans-serif;
+      margin-top: 20px;
+      margin-left: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 전체 중앙 정렬 */
+    }
+
+    /* 상단바 스타일 */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      width: 100%;
+      background-color: #ffffff;
+      box-sizing: border-box;
+    }
+
+    /* 메뉴 버튼 스타일 */
+    .nav-links {
+      display: flex;
+      gap: 0px;
+    }
+
+    .nav-item {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 30px 120px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-top: 1px solid #000000;
+      border-bottom: 1px solid #000000;
+    }
+
+    .nav-item:first-child {
+      border-left: 1px solid #000000;
+      border-right: 1px solid #000000;
+    }
+
+    .nav-item:last-child {
+      border-right: 1px solid #000000;
+      border-left: 1px solid #000000;
+    }
+
+    .nav-item:hover {
+      background-color: #caf6c9;
+    }
+
+    /* 화살표 아이콘 스타일 */
+    .scroll-arrow {
+      position: fixed; /* 화면에 고정 */
+      top: 10px; /* 화면 상단에서의 위치 */
+      right: 20px; /* 화면 오른쪽에서의 위치 */
+      font-size: 10em;
+      color: #000000;
+      cursor: pointer;
+    }
+
+    .scroll-arrow:hover {
+      color: hsl(321, 75%, 76%);
+    }
+
+    /* 아래쪽 화살표 스타일 */
+    .scroll-up-arrow {
+      position: fixed; /* 화면 하단에서의 위치 */
+      bottom: 20px; /* 화면 하단에서의 위치 */
+      right: 20px; /* 화면 오른쪽에서의 위치 */
+      font-size: 10em;
+      color: #000000;
+      cursor: pointer;
+    }
+
+    .scroll-up-arrow:hover {
+      color: hsl(256, 74%, 71%);
+    }
+
+    /* 이미지 컨테이너 스타일 */
+    .image-container {
+      display: flex;
+      justify-content: center; /* 중앙 정렬 */
+      gap: 40px; /* 이미지 사이 간격 */
+      margin: 20px;
+      flex-wrap: wrap; /* 여러 줄로 정렬 */
+    }
+
+    /* 각 이미지 쌍을 위한 개별 컨테이너 */
+    .image-wrapper {
+      position: relative;
+      width: 500px;
+      height: 500px;
+    }
+
+    /* 이미지 스타일 */
+    .hover-image {
+      width: 500px;
+      height: 500px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* 기본 이미지 보이기 */
+    .hover-image.default {
+      opacity: 1;
+    }
+
+    /* 커서 호버 시 기본 이미지 숨기고 대체 이미지 보이기 */
+    .image-wrapper:hover .hover-image.default {
+      opacity: 0;
+    }
+
+    /* 대체 이미지 숨기기 */
+    .hover-image:not(.default) {
+      opacity: 0;
+    }
+
+    /* 커서 호버 시 대체 이미지 보이기 */
+    .image-wrapper:hover .hover-image:not(.default) {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단바 -->
+  <div class="navbar">
+    <div class="nav-links">
+      <a href="https://www.instagram.com/hhotd0g/" target="_blank" class="nav-item">Insta</a>
+      <a href="pdf/your-pdf-link.pdf" target="_blank" class="nav-item">About me</a>
+      <a href="pdf/your-pdf-link.pdf" target="_blank" class="nav-item">Career</a>
+    </div>
+  </div>
+
+  <!-- 고정된 아래로 스크롤 화살표 -->
+  <div class="scroll-arrow" onclick="scrollDown()">▼</div>
+
+  <!-- 고정된 위로 스크롤 화살표 -->
+  <div class="scroll-up-arrow" onclick="scrollUp()">▲</div>
+
+  <!-- 첫 번째 이미지 줄 -->
+  <div class="image-container">
+    <!-- 왼쪽 이미지 -->
+    <div class="image-wrapper">
+      <a href="pdf/포폴_카페brooks.pdf" target="_blank">
+        <img src="images/부.png" alt="기본 이미지" class="hover-image default">
+        <img src="images/부2.png" alt="대체 이미지" class="hover-image">
+      </a>
+    </div>
+
+    <!-- 오른쪽 이미지 -->
+    <div class="image-wrapper">
+      <a href="pdf/인.pdf" target="_blank">
+        <img src="images/인.png" alt="기본 이미지" class="hover-image default">
+        <img src="images/인2.png" alt="대체 이미지" class="hover-image">
+      </a>
+    </div>
+  </div>
+
+  <!-- 추가 이미지 줄 -->
+  <div class="image-container">
+    <!-- 추가 이미지들 -->
+    <div class="image-wrapper">
+      <a href="pdf/꿈.pdf" target="_blank">
+        <img src="images/꿈.png" alt="추가 이미지 1" class="hover-image default">
+        <img src="images/꿈2.png" alt="추가 이미지 1 대체" class="hover-image">
+      </a>
+    </div>
+
+    <div class="image-wrapper">
+      <a href="pdf/세.pdf" target="_blank">
+        <img src="images/세.png" alt="추가 이미지 2" class="hover-image default">
+        <img src="images/세2.png" alt="추가 이미지 2 대체" class="hover-image">
+      </a>
+    </div>
+
+    <div class="image-wrapper">
+      <a href="pdf/마.pdf" target="_blank">
+        <img src="images/마.png" alt="추가 이미지 3" class="hover-image default">
+        <img src="images/마2.png" alt="추가 이미지 3 대체" class="hover-image">
+      </a>
+    </div>
+
+    <div class="image-wrapper">
+      <a href="pdf/안.pdf" target="_blank">
+        <img src="images/안.png" alt="추가 이미지 4" class="hover-image default">
+        <img src="images/안2.png" alt="대체 이미지" class="hover-image">
+      </a>
+    </div>
+
+    <div class="image-wrapper">
+      <a href="pdf/잉.pdf" target="_blank">
+        <img src="images/잉.png" alt="추가 이미지 5" class="hover-image default">
+        <img src="images/잉2.png" alt="대체 이미지" class="hover-image">
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function scrollDown() {
+      window.scrollBy({
+        top: window.innerHeight / 2,
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollUp() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+</html>
